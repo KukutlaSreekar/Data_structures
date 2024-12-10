@@ -1,0 +1,70 @@
+#include<stdio.h>
+
+# define n 8
+
+int a[n]={5,7,12,9,1,19,27,37};
+
+void quicks(int h, int t){
+
+    int l,r,temp,k;
+
+    if(h<t){
+
+        l=h;
+
+        k=h;
+
+        r=t;
+
+        while(l<r){
+
+        while(a[l]<=a[k] && l<t)
+
+        l++;
+
+        while(a[r]>a[k] && r>h)
+
+        r--;
+
+        if(l<r){
+
+            temp=a[l];
+
+            a[l]=a[r];
+
+            a[r]=temp;
+
+        }
+
+        }
+
+    temp=a[k];
+
+            a[k]=a[r];
+
+            a[r]=temp;
+
+            quicks(h,r-1);
+
+            quicks(r+1,t);
+
+    }
+
+}
+
+int main(){
+
+    int i;
+
+    quicks(0,n-1);
+
+    printf("The sorted list is: ");
+
+    for(i=0;i<n;i++)
+
+    printf("%d\t",a[i]);
+
+    return 0;
+
+}
+
