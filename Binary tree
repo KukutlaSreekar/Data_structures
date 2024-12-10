@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+struct node {
+
+ int dt; 
+
+ struct node *l; 
+
+ struct node *r; 
+
+};
+
+struct node* new_node(int val) {
+
+ struct node *nn = (struct node*)malloc(sizeof(struct node));
+
+ nn->dt = val;
+
+ nn->l = NULL; 
+
+ nn->r = NULL; 
+
+ return nn;}
+
+void display(struct node *tp) {
+
+ if (tp != NULL) {
+
+ display(tp->l); 
+
+ printf("%d\t", tp->dt); 
+
+ display(tp->r); 
+
+ }}
+
+int main() {
+
+ struct node *root = new_node(5); 
+
+ root->l = new_node(7); 
+
+ root->r = new_node(9); 
+
+ root->l->l = new_node(8); 
+
+ root->l->r = new_node(10); 
+
+ root->r->r = new_node(4); 
+
+ display(root); 
+
+ return 0; }
